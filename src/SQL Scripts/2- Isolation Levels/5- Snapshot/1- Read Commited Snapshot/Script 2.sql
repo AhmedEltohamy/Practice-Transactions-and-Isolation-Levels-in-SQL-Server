@@ -1,0 +1,15 @@
+USE BobsShoes
+GO
+
+-- Start Step 2
+
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED
+
+BEGIN TRAN
+    UPDATE Orders.Orders 
+    SET OrderRequestedDate = '30000101'
+    WHERE OrderID = 1;
+    WAITFOR DELAY '00:00:10'
+ROLLBACK
+
+-- End Step 2
